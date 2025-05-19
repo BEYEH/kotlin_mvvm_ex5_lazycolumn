@@ -5,7 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyItemScope
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
@@ -24,10 +24,16 @@ fun ListDemo() {
  * Render the data which can show in the view.
  */
 @Composable
-fun LazyColumnDemo(){
+fun LazyColumnDemo() {
+    var myList = listOf<String>(
+        "a", "b", "c", "d", "e", "f",
+        "g", "h", "i", "k", "l", "m",
+        "n", "o", "p", "q", "r", "s"
+    )
+
     LazyColumn(content = {
-        items (100, itemContent = {
-            TextItem(text = "Index $it")
+        itemsIndexed(myList, itemContent = { index, item ->
+            TextItem(text = "Item $item")
         })
     })
 }
@@ -53,13 +59,15 @@ fun SimpleColumn() {
 }
 
 @Composable
-fun TextItem(text: String){
+fun TextItem(text: String) {
     Log.i("TextItem: ", text)
 
-    Text(text = text,
+    Text(
+        text = text,
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
         textAlign = TextAlign.Center,
-        fontSize = 20.sp)
+        fontSize = 20.sp
+    )
 }
