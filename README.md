@@ -15,6 +15,12 @@
 - Jetpack Compose
   - LazyColumn
   - LazyRow
+- Note
+  - Column
+    - Show all data at once.
+  - LazyColumn
+    - Load and show data which are visible in the screen.
+    - Render dynamically. It can boost performance.
 
 ## Resources
 
